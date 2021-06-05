@@ -199,3 +199,4 @@ cmake-build-*
 ## custom
 #############
 tags
+install/
