@@ -2016,7 +2016,7 @@ void S_AddLoopSounds (void)
 		//
 		if (loop->sfx->pMP3StreamHeader)
 		{
-			Com_Error( ERR_DROP, "S_AddLoopSounds(): Cannot use streamed MP3 files here for random access (%s)\n",loop->sfx->sSoundName );
+			//Com_Error( ERR_DROP, "S_AddLoopSounds(): Cannot use streamed MP3 files here for random access (%s)\n",loop->sfx->sSoundName );
 		}
 		else
 		{
