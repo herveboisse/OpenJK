@@ -33,6 +33,7 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
 #include <sched.h>
 #include <signal.h>
 
+#include "qcommon/q_version.h"
 #include "qcommon/qcommon.h"
 #include "qcommon/q_shared.h"
 #include "sys_local.h"
@@ -475,6 +476,10 @@ char *Sys_DefaultHomePath(void)
 #else
 char *Sys_DefaultHomePath(void)
 {
+#if defined(BUILD_PORTABLE)
+	Com_Printf( "Portable install requested, skipping homepath support\n" );
+	return NULL;
+#else
 	char *p;
 
 	if ( !homePath[0] )
@@ -503,6 +508,7 @@ char *Sys_DefaultHomePath(void)
 	}
 
 	return homePath;
+#endif // BUILD_PORTABLE
 }
 #endif
 
