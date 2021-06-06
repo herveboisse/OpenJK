@@ -7616,6 +7616,7 @@ void WP_ForcePowerRegenerate( gentity_t *self, int overrideAmt )
 
 void WP_ForcePowerDrain( gentity_t *self, forcePowers_t forcePower, int overrideAmt )
 {
+	return;
 	if ( self->NPC )
 	{//For now, NPCs have infinite force power
 		return;
