@@ -77,7 +77,7 @@ qboolean CL_InitCGameVM( void *gameLibrary )
 		const char *gamename = "jagame";
 #endif
 
-		Com_Printf( "CL_InitCGameVM: client game entry point not found in %s" ARCH_STRING DLL_EXT ": %s\n",
+		Com_Printf( "CL_InitCGameVM: client game entry point not found in %s" DLL_EXT ": %s\n",
 					gamename, Sys_LibraryError() );
 		return qfalse;
 	}

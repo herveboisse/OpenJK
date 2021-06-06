@@ -469,7 +469,7 @@ void *Sys_LoadLegacyGameDll( const char *name, VMMainProc **vmMain, SystemCallPr
 	void	*libHandle = NULL;
 	char	filename[MAX_OSPATH];
 
-	Com_sprintf (filename, sizeof(filename), "%s" ARCH_STRING DLL_EXT, name);
+	Com_sprintf (filename, sizeof(filename), "%s" DLL_EXT, name);
 
 #if defined(_DEBUG)
 	libHandle = Sys_LoadLibrary( filename );
@@ -553,7 +553,7 @@ void *Sys_LoadSPGameDll( const char *name, GetGameAPIProc **GetGameAPI )
 
 	assert( GetGameAPI );
 
-	Com_sprintf (filename, sizeof(filename), "%s" ARCH_STRING DLL_EXT, name);
+	Com_sprintf (filename, sizeof(filename), "%s" DLL_EXT, name);
 
 #if defined(MACOS_X) && !defined(_JK2EXE)
     //First, look for the old-style mac .bundle that's inside a pk3
@@ -602,7 +602,7 @@ void *Sys_LoadGameDll( const char *name, GetModuleAPIProc **moduleAPI )
 	void	*libHandle = NULL;
 	char	filename[MAX_OSPATH];
 
-	Com_sprintf (filename, sizeof(filename), "%s" ARCH_STRING DLL_EXT, name);
+	Com_sprintf (filename, sizeof(filename), "%s" DLL_EXT, name);
 
 #if defined(_DEBUG)
 	libHandle = Sys_LoadLibrary( filename );
