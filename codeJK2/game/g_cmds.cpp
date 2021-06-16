@@ -1063,6 +1063,13 @@ static void Cmd_RestoreLimbs_f( gentity_t *ent )
 	ent->client->dismembered = qfalse;
 }
 
+static void Cmd_FewLife_f( gentity_t *ent )
+{
+	ent->health = 1;
+	ent->client->ps.stats[STAT_ARMOR] = 0;
+	//ent->client->ps.powerups[PW_BATTLESUIT] = 0;
+}
+
 /*
 =================
 ClientCommand
@@ -1192,6 +1199,10 @@ void ClientCommand( int clientNum ) {
 	else if (Q_stricmp (cmd, "restorelimbs") == 0)
 	{
 		Cmd_RestoreLimbs_f( ent );
+	}
+	else if (Q_stricmp (cmd, "fewlife") == 0)
+	{
+		Cmd_FewLife_f( ent );
 	}
 	else
 	{
