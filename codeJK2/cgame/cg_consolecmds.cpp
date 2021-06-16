@@ -266,6 +266,7 @@ qboolean CG_ConsoleCommand( void ) {
 static const char *gcmds[] = {
 	"entitylist",
 	"difficulty",
+	"fewlife",
 	"force_distract",
 	"force_grip",
 	"force_heal",
