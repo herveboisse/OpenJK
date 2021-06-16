@@ -1003,6 +1003,66 @@ void G_Victory( gentity_t *ent )
 		}
 	}
 }
+
+static void Cmd_RestoreLimbs_f( gentity_t *ent )
+{
+	const char *limbName = NULL, *stubCapName = NULL;
+
+	ent->locationDamage[HL_LEG_RT] = 0;
+	limbName = "r_leg";
+	stubCapName = "hips_cap_r_leg_off";
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], limbName, 0 );
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], stubCapName, 0x00000100 );//G2SURFACEFLAG_NODESCENDANTS
+
+	ent->locationDamage[HL_LEG_LT] = 0;
+	limbName = "l_leg";
+	stubCapName = "hips_cap_l_leg_off";
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], limbName, 0 );
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], stubCapName, 0x00000100 );//G2SURFACEFLAG_NODESCENDANTS
+
+	ent->locationDamage[HL_HAND_LT] = 0;
+	limbName = "l_hand";
+	stubCapName = "l_arm_cap_l_hand_off";
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], limbName, 0 );
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], stubCapName, 0x00000100 );//G2SURFACEFLAG_NODESCENDANTS
+
+	ent->locationDamage[HL_ARM_LT] = 0;
+	ent->locationDamage[HL_CHEST_LT] = 0;
+	ent->locationDamage[HL_BACK_RT] = 0;
+	limbName = "l_arm";
+	stubCapName = "torso_cap_l_arm_off";
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], limbName, 0 );
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], stubCapName, 0x00000100 );//G2SURFACEFLAG_NODESCENDANTS
+
+	ent->locationDamage[HL_HAND_RT] = 0;
+	limbName = "r_hand";
+	stubCapName = "r_arm_cap_r_hand_off";
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], limbName, 0 );
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], stubCapName, 0x00000100 );//G2SURFACEFLAG_NODESCENDANTS
+
+	ent->locationDamage[HL_ARM_RT] = 0;
+	ent->locationDamage[HL_CHEST_RT] = 0;
+	ent->locationDamage[HL_BACK_LT] = 0;
+	limbName = "r_arm";
+	stubCapName = "torso_cap_r_arm_off";
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], limbName, 0 );
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], stubCapName, 0x00000100 );//G2SURFACEFLAG_NODESCENDANTS
+
+	ent->locationDamage[HL_HEAD] = 0;
+	limbName = "head";
+	stubCapName = "torso_cap_head_off";
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], limbName, 0 );
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], stubCapName, 0x00000100 );//G2SURFACEFLAG_NODESCENDANTS
+
+	ent->locationDamage[HL_WAIST] = 0;
+	limbName = "torso";
+	stubCapName = "hips_cap_torso_off";
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], limbName, 0 );
+	gi.G2API_SetSurfaceOnOff( &ent->ghoul2[ent->playerModel], stubCapName, 0x00000100 );//G2SURFACEFLAG_NODESCENDANTS
+
+	ent->client->dismembered = qfalse;
+}
+
 /*
 =================
 ClientCommand
@@ -1128,6 +1188,10 @@ void ClientCommand( int clientNum ) {
 		{
 			gi.SetConfigstring( CS_MUSIC, cmd2 );
 		}
+	}
+	else if (Q_stricmp (cmd, "restorelimbs") == 0)
+	{
+		Cmd_RestoreLimbs_f( ent );
 	}
 	else
 	{

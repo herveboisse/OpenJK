@@ -281,6 +281,7 @@ static const char *gcmds[] = {
 	"notarget",
 	"npc",
 	"playerteam",
+	"restorelimbs",
 	"runscript",
 	"saberAttackCycle",
 	"saberColor",
