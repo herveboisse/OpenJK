@@ -4203,9 +4203,11 @@ qboolean WP_SaberLose( gentity_t *self, vec3_t throwDir )
 	gentity_t *dropped = &g_entities[self->client->ps.saberEntityNum];
 	if ( !self->client->ps.saberInFlight )
 	{//not alreay in air
-		//make it so we can throw it
-		self->client->ps.forcePowersKnown |= (1<<FP_SABERTHROW);
-		self->client->ps.forcePowerLevel[FP_SABERTHROW] = FORCE_LEVEL_1;
+		if ( !(self->client->ps.forcePowersKnown & (1 << FP_SABERTHROW)) )
+		{//make it so we can throw it
+			self->client->ps.forcePowersKnown |= 1 << FP_SABERTHROW;
+			self->client->ps.forcePowerLevel[FP_SABERTHROW] = FORCE_LEVEL_1;
+		}
 		//throw it
 		if ( !WP_SaberLaunch( self, dropped, qfalse ) )
 		{//couldn't throw it
