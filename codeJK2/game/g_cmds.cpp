@@ -1068,6 +1068,9 @@ static void Cmd_FewLife_f( gentity_t *ent )
 	ent->health = 1;
 	ent->client->ps.stats[STAT_ARMOR] = 0;
 	//ent->client->ps.powerups[PW_BATTLESUIT] = 0;
+
+	// value taken from ClientSpawn()
+	ent->client->ps.friction = 6;
 }
 
 /*
