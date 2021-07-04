@@ -581,7 +581,7 @@ void *Sys_LoadSPGameDll( const char *name, GetGameAPIProc **GetGameAPI )
 		size_t numPaths = ARRAY_LEN( searchPaths );
 
 		libHandle = Sys_LoadDllFromPaths( filename, gamedir, searchPaths, numPaths,
-											SEARCH_PATH_BASE | SEARCH_PATH_MOD | SEARCH_PATH_OPENJK | SEARCH_PATH_ROOT,
+											SEARCH_PATH_MOD | SEARCH_PATH_OPENJK | SEARCH_PATH_ROOT,
 											__FUNCTION__ );
 		if ( !libHandle )
 			return NULL;
@@ -655,7 +655,7 @@ void *Sys_LoadGameDll( const char *name, GetModuleAPIProc **moduleAPI )
 				};
 				size_t numPaths = ARRAY_LEN( searchPaths );
 
-				libHandle = Sys_LoadDllFromPaths( filename, gamedir, searchPaths, numPaths, SEARCH_PATH_OPENJK | SEARCH_PATH_BASE | SEARCH_PATH_MOD, __FUNCTION__ );
+				libHandle = Sys_LoadDllFromPaths( filename, gamedir, searchPaths, numPaths, SEARCH_PATH_OPENJK | SEARCH_PATH_MOD, __FUNCTION__ );
 				if ( !libHandle )
 					return NULL;
 			}
